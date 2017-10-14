@@ -1,0 +1,63 @@
+- client:
+  # приветственное сообщение от Action Cable
+  - receive:
+      # если поле data – объект, то
+      # предполагаем, что это json
+      data:
+        type: "welcome"
+  # подписка на канал и ожидание подтверждения
+  - send:
+      data:
+        command: "subscribe"
+        identifier: "{\"channel\":\"TestChannel\"}"
+  - receive:
+      data:
+        type: "confirm_subscription"
+        identifier: "{\"channel\":\"TestChannel\"}"
+  - send:
+      data:
+        command: "message"
+        identifier: "{\"channel\":\"TestChannel\"}"
+        data: "{\"text\": \"echo\",\"action\":\"echo\"}"
+  - receive:
+      data:
+        identifier: "{\"channel\":\"TestChannel\"}"
+        message: "{\"text\": \"echo\",\"action\":\"echo\"}"
+  - wait_all
+  - send:
+      data:
+        command: "message"
+        identifier: "{\"channel\":\"TestChannel\"}"
+        data: "{\"text\": \"hello\", \"action\":\"broadcast\"}"
+- client:
+  # приветственное сообщение от Action Cable
+  - receive:
+      # если поле data – объект, то
+      # предполагаем, что это json
+      data:
+        type: "welcome"
+  # подписка на канал и ожидание подтверждения
+  - send:
+      data:
+        command: "subscribe"
+        identifier: "{\"channel\":\"TestChannel\"}"
+  - receive:
+      data:
+        type: "confirm_subscription"
+        identifier: "{\"channel\":\"TestChannel\"}"
+  - send:
+      data:
+        command: "message"
+        identifier: "{\"channel\":\"TestChannel\"}"
+        data: "{\"text\": \"echo\",\"action\":\"echo\"}"
+  - receive:
+      data:
+        identifier: "{\"channel\":\"TestChannel\"}"
+        message: "{\"text\": \"echo\",\"action\":\"echo\"}"
+  - wait_all
+  - receive:
+      # каждый клиент должен получить сообщение от каждого публикующего клиента
+      multiplier: ":scale"
+      data:
+        identifier: "{\"channel\":\"TestChannel\"}"
+        message: "{\"text\": \"hello\", \"action\":\"broadcast\"}"

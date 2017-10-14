@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "wsdirector"
+
+runner = Wsdirector::Runner.new("./broadcast.yml")
+runner.call
