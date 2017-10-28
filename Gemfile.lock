@@ -11,6 +11,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    anyway_config (1.1.1)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     concurrent-ruby-edge (0.3.1)
@@ -21,24 +22,27 @@ GEM
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     event_emitter (0.2.6)
+    litecable (0.5.0)
+      anyway_config (~> 1.0)
     method_source (0.9.0)
     pry (0.11.1)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    puma (3.10.0)
     rake (10.5.0)
-    rspec (3.6.0)
-      rspec-core (~> 3.6.0)
-      rspec-expectations (~> 3.6.0)
-      rspec-mocks (~> 3.6.0)
-    rspec-core (3.6.0)
-      rspec-support (~> 3.6.0)
-    rspec-expectations (3.6.0)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.6.0)
-    rspec-mocks (3.6.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.6.0)
-    rspec-support (3.6.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.0)
     websocket (1.2.4)
     websocket-client-simple (0.3.0)
       event_emitter
@@ -49,7 +53,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16.a)
+  litecable
   pry
+  puma
   rake (~> 10.0)
   rspec (~> 3.0)
   wsdirector!

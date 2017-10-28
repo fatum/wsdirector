@@ -32,6 +32,8 @@ module Wsdirector
           ws.on :message do |msg|
             data = JSON.parse(msg.data)
 
+            # p data
+
             # _.log :websocket, "msg: #{msg.data}"
 
             if data['type'] == 'ping'

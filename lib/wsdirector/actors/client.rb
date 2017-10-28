@@ -63,12 +63,7 @@ module Wsdirector
         when 'wait_all'
           log "Request synchronization"
 
-          if name == "client-1"
-            Concurrent::ScheduledTask.execute(10) { parent.tell(:wait) }
-            :ok
-          else
-            parent.tell :wait
-          end
+          parent.tell :wait
         end
       end
 
@@ -116,6 +111,7 @@ module Wsdirector
       def log(msg)
         entry = "[#{name}] #{Time.now.to_i} #{msg}"
         puts entry
+
         @logs << entry
       end
     end
